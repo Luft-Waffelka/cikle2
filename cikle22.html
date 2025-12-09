@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Температура логикасы</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+        margin: 0;
+        padding: 20px;
+        color: #222;
+    }
+
+    .container {
+        max-width: 480px;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid #44aa44;
+        border-radius: 12px;
+        background: #f8f8f8;
+        animation: fade 0.5s ease;
+    }
+
+    @keyframes fade {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    h2 {
+        text-align: center;
+        color: #d33131;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 95%;
+        padding: 12px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 2px solid #44aa44;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        background: #44aa44;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #3e983e;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        background: #e7ffe7;
+        border-left: 4px solid #44aa44;
+        animation: fade 0.4s ease;
+    }
+
+    @media (max-width: 400px) {
+        h2 { font-size: 20px; }
+        button { font-size: 16px; }
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Киім таңдау алгоритмі</h2>
+
+    <input type="number" id="tempInput" placeholder="Температура енгізіңіз (мысалы: 15)">
+    <button onclick="checkTemp()">Тексеру</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkTemp() {
+    const t = Number(document.getElementById("tempInput").value);
+    const result = document.getElementById("result");
+
+    if (isNaN(t)) {
+        result.innerHTML = '<div class="result">Температура дұрыс емес.</div>';
+        return;
+    }
+
+    let text = "";
+
+    if (t > 20) {
+        text = "Жеңіл киім кию.";
+    } else if (t > 10) {
+        text = "Жеңіл күртеше кию.";
+    } else if (t > 0) {
+        text = "Қалың күртеше кию.";
+    } else {
+        text = "Суық киімдер: пальто, бас киім.";
+    }
+
+    result.innerHTML = `<div class="result">${text}</div>`;
+}
+</script>
+
+</body>
+</html>
